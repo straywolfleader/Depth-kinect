@@ -25,41 +25,15 @@ int main(int argc, char **argv[])
 	// 打开kinect  
 	IKinectSensor* pSensor;
 	HRESULT hResult = S_OK;
-	hResult = GetDefaultKinectSensor(&pSensor);
-	if (FAILED(hResult)) {
-		cerr << "Error : GetDefaultKinectSensor" << std::endl;
-		return -1;
-	}
-
-	hResult = pSensor->Open();
-	if (FAILED(hResult)) {
-		cerr << "Error : IKinectSensor::Open()" << std::endl;
-		return -1;
-	}
 
 	// 深度帧源  
 	IDepthFrameSource* pDepthSource;
-	hResult = pSensor->get_DepthFrameSource(&pDepthSource);
-	if (FAILED(hResult)) {
-		cerr << "Error : IKinectSensor::get_DepthFrameSource()" << std::endl;
-		return -1;
-	}
 
 	// 深度帧读取  
 	IDepthFrameReader* pDepthReader;
-	hResult = pDepthSource->OpenReader(&pDepthReader);
-	if (FAILED(hResult)) {
-		cerr << "Error : IDepthFrameSource::OpenReader()" << std::endl;
-		return -1;
-	}
 
 	// Description  
 	IFrameDescription* pDescription;
-	hResult = pDepthSource->get_FrameDescription(&pDescription);
-	if (FAILED(hResult)) {
-		cerr << "Error : IDepthFrameSource::get_FrameDescription()" << std::endl;
-		return -1;
-	}
 
 	int width = 0;
 	int height = 0;
